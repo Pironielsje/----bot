@@ -35,7 +35,7 @@ client.on('ready', () => {
 
 client.on('message', async message => {
     if (!db.get(`prefix_${message.guild.id}`)) {
-        db.set(`prefix_${message.guild.id}`)
+        db.set(`prefix_${message.guild.id}`, '.')
     }
 
     let prefix = db.get(`prefix_${message.guild.id}`)
