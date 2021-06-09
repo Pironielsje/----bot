@@ -17,7 +17,7 @@ module.exports.run = async(client, message, args) => {
     });
 
     let response = new MessageEmbed()
-        .setTitle("**Help - (☞ﾟヮﾟ)☞      ☜(ﾟヮﾟ☜)")
+        .setTitle("**Help - (☞ﾟヮﾟ)☞      ☜(ﾟヮﾟ☜)**")
         .setDescription("All commands for (☞ﾟヮﾟ)☞      ☜(ﾟヮﾟ☜).")
         .setColor("RANDOM")
         .setFooter(message.author.tag, message.author.displayAvatarURL())
