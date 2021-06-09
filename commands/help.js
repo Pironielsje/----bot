@@ -28,7 +28,7 @@ module.exports.run = async(client, message, args) => {
         let command = commandsList[i]
 
         if (command["category"] == "Info") {
-            info += `**${prefix}${command["name"]} - Description: ${command["description"]} Aliases: ${command["aliases"]}\ns`
+            info += `**${prefix}${command["name"]}** - Description: ${command["description"]} Aliases: ${command["aliases"]}\ns`
         }
 
     }
