@@ -31,6 +31,8 @@ fs.readdir('./commands/', (err, file) => {
 
 client.on('ready', () => {
     console.log('ready')
+
+    client.user.setActivity("**yeeting** people away")
 })
 
 client.on('message', async message => {
@@ -44,7 +46,7 @@ client.on('message', async message => {
     let command = args.shift().toLowerCase()
     let commands = client.commands.get(command) || client.commands.get(client.aliases.get(command))
 
-    if (commands) client.commands.run(client, message, args)
+    if (commands) commands.run(client, message, args)
 })
 
 client.login(process.env.token)
