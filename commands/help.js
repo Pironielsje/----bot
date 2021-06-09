@@ -17,7 +17,7 @@ module.exports.run = async(client, message, args) => {
     });
 
     let response = new MessageEmbed()
-        .setTitle("**Help - (☞ﾟヮﾟ)☞      ☜(ﾟヮﾟ☜)**")
+        .setTitle("Help - (☞ﾟヮﾟ)☞      ☜(ﾟヮﾟ☜)")
         .setDescription("All commands for (☞ﾟヮﾟ)☞      ☜(ﾟヮﾟ☜).")
         .setColor("RANDOM")
         .setFooter(message.author.tag, message.author.displayAvatarURL())
@@ -28,7 +28,7 @@ module.exports.run = async(client, message, args) => {
         let command = commandsList[i]
 
         if (command["category"] == "Info") {
-            info += `**${prefix}${command["name"]}** - Description: ${command["description"]} Aliases: ${command["aliases"]}\ns`
+            info += `${prefix}${command["name"]} - Description: ${command["description"]} Aliases: ${command["aliases"]}\ns`
         }
 
     }
