@@ -21,6 +21,7 @@ module.exports.run = async(client, message, args) => {
         .setDescription("All commands for (☞ﾟヮﾟ)☞      ☜(ﾟヮﾟ☜).")
         .setColor("RANDOM")
         .setFooter(message.author.tag, message.author.displayAvatarURL())
+        .setTimestamp()
 
     let info = response.addField("Info", "Information commands. \n")
 
