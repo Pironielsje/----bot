@@ -24,17 +24,20 @@ module.exports.run = async(client, message, args) => {
         .setTimestamp()
 
     let info = response.addField("Info", "Information commands. \n")
+    let moderation = response.addField("Moderation", "Moderation commands. \n")
 
     for (let i = 0; i < commandsList.length; i++) {
         let command = commandsList[i]
 
         if (command["category"] == "Info") {
-            info += response.addField(`${prefix}${command["name"]} - Description: ${command["description"]} Aliases: ${command["aliases"]}\n`)
+            info += response.addField(`${prefix}${command["name"]}`, `${prefix}${command["name"]} - Description: ${command["description"]} Aliases: ${command["aliases"]}\n`)
+        }
+
+        if (command["category"] == "Moderation") {
+            moderation += response.addField(`${prefix}${command["name"]}`, `${prefix}${command["name"]} - Description: ${command["description"]} Aliases: ${command["aliases"]}\n`)
         }
 
     }
-
-    response.addField(info)
 
     message.channel.send(response)
 
