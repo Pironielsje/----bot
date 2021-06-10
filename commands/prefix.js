@@ -8,7 +8,7 @@ module.exports.run = async(client, message, args) => {
     if (!message.member.hasPermission("ADMINISTRATOR")) return message.reply("You need the **ADMINISTRATOR** permissions to do this.")
     if (!message.guild.me.hasPermission("ADMINISTRATOR")) return message.reply("I need the **ADMINISTRATOR** permissions to do this.")
 
-    db.set(`prefix_${message.guild.id}`)
+    db.set(`prefix_${message.guild.id}`, args[0])
 
     let embed = new MessageEmbed()
         .setTitle("New prefix.")
