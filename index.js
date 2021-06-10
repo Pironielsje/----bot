@@ -36,11 +36,14 @@ client.on('ready', () => {
 })
 
 client.on('message', async message => {
+
     if (!db.get(`prefix_${message.guild.id}`)) {
         db.set(`prefix_${message.guild.id}`, '.')
     }
 
     let prefix = db.get(`prefix_${message.guild.id}`)
+
+    if (message.author.bot || !message.content.startsWith(prefix)) return
 
     let args = message.content.slice(prefix.length).trim().split(" ")
     let command = args.shift().toLowerCase()
