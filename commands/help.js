@@ -1,51 +1,32 @@
-const { MessageEmbed } = require('discord.js');
+const { MessageEmbed, Message, MessageFlags } = require('discord.js');
 const db = require('quick.db')
 
 module.exports.run = async(client, message, args) => {
-    var commandsList = []
     const prefix = db.get(`prefix_${message.guild.id}`)
 
-    client.commands.forEach((command) => {
-        var constructor = {
-            name: command.help.name,
-            description: command.help.description,
-            category: command.help.category,
-            aliases: command.help.aliases
-        }
-
-        commandsList.push(constructor)
-    });
-
-    let response = new MessageEmbed()
-        .setTitle("Help - (☞ﾟヮﾟ)☞      ☜(ﾟヮﾟ☜)")
-        .setDescription("All commands for (☞ﾟヮﾟ)☞      ☜(ﾟヮﾟ☜).")
+    let moderation = new MessageEmbed()
+        .setTitle(`Moderation commands - ${client.user.username}`)
         .setColor("RANDOM")
+        .addFields({ name: `${prefix}prefix`, value: "Description: Set a new prefix. Aliases: yeetix." })
         .setFooter(message.author.tag, message.author.displayAvatarURL())
         .setTimestamp()
 
-    let info = response.addField("Info", "Information commands. \n")
-    let moderation = response.addField("Moderation", "Moderation commands. \n")
+    let info = new MessageEmbed()
+        .setTitle(`Information commands - ${client.user.username}`)
+        .setColor("RANDOM")
+        .addFields({ name: `${prefix}hellp`, value: "Description: Give a help message of a specific category (info, moderation). Aliases: h, yeet." })
+        .setFooter(message.author.tag, message.author.displayAvatarURL())
+        .setTimestamp()
 
-    for (let i = 0; i < commandsList.length; i++) {
-        let command = commandsList[i]
+    if (!args[0]) return message.reply('Specify a category.')
 
-        if (command["category"] == "Info") {
-            info += response.addField(`${prefix}${command["name"]}`, `${prefix}${command["name"]} - Description: ${command["description"]} Aliases: ${command["aliases"]}\n`)
-        }
-
-        if (command["category"] == "Moderation") {
-            moderation += response.addField(`${prefix}${command["name"]}`, `${prefix}${command["name"]} - Description: ${command["description"]} Aliases: ${command["aliases"]}\n`)
-        }
-
-    }
-
-    message.channel.send(response)
+    if (args[0] === "moderation") message.channel.send(moderation)
+    if (args[0] === "info") message.channel.send(info)
 
 }
 
 module.exports.help = {
     name: "help",
     description: "Send the help message.",
-    category: "Info",
     aliases: ["yeet", "h"]
 }
